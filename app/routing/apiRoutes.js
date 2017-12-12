@@ -15,9 +15,7 @@ module.exports = function(app) {
 
     app.post('/api/friends', function(req, res) {
 
-        var newFriend = req.body;
-
-        var userScore = newFriend.score;
+        var newFriend = req.body.score;
 
         // console.log(newFriend);
 
@@ -25,28 +23,33 @@ module.exports = function(app) {
 
         // console.log(friends);
 
-        match(friends.score, userScore);
+        // match(friends.score, userScore);
 
         res.json(newFriend)
 
-        function match(friends, userScore) {
-
-            var diff = 0;
-
+        function match(friends, newFriend) {
             for (var i = 0; i < friends.length; i++) {
+
+                var diff = 0;
 
                 console.log(friends[i].score);
             }
 
-            for (var j = 0; j < userScore.length; j++) {
+            for (var j = 0; j < newFriend.length; j++) {
 
-                diff += Math.abs(friends[i].score[j] - userScore[j]);
+                diff += Math.abs(friends[i].score[j] - newFriend[j]);
 
-                console.log('these are the diffs!: ' + diff);
+
             }
-
-
+            console.log("heres the diffs: " + diff);
         }
+
+        match(friends, newFriend);
+
+
+
+
+
 
     })
 }
