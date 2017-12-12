@@ -19,23 +19,31 @@ module.exports = function(app) {
 
         var userScore = newFriend.score;
 
-        console.log(newFriend);
+        // console.log(newFriend);
 
         friends.push(newFriend);
 
-        console.log(friends);
+        // console.log(friends);
 
-        match(userScore, friends.score);
+        match(friends.score, userScore);
 
         res.json(newFriend)
 
-        function match(userScore, friendsScore) {
+        function match(friends, userScore) {
+
+            var diff = 0;
 
             for (var i = 0; i < friends.length; i++) {
 
                 console.log(friends[i].score);
             }
 
+            for (var j = 0; j < userScore.length; j++) {
+
+                diff += Math.abs(friends[i].score[j] - userScore[j]);
+
+                console.log('these are the diffs!: ' + diff);
+            }
 
 
         }
